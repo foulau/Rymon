@@ -401,10 +401,9 @@
         const SUPABASE_URL = 'https://pjhonelvmspngvpbxfmd.supabase.co';
         const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBqaG9uZWx2bXNwbmd2cGJ4Zm1kIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTE1NzAxNDYsImV4cCI6MjA2NzE0NjE0Nn0.kT0pKOsAyrWbeKodvY359uZdAftzQwY6RN-9-pJfEmQ';
 
-        // Initialize Supabase client
-        const supabase = supabasejs.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+        // Initialize Supabase client — note: use 'supabase', not 'supabasejs'
+        const supabase = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
-        // Initialize the store
         async function initializeStore() {
             try {
                 await loadSiteTitle();
@@ -414,7 +413,6 @@
             }
         }
 
-        // Load site title from Supabase
         async function loadSiteTitle() {
             try {
                 const { data, error } = await supabase
@@ -437,6 +435,8 @@
                 console.error('Error loading site title:', error);
             }
         }
+
+        document.addEventListener('DOMContentLoaded', initializeStore);
 
         // Run store initialization after DOM is ready
         document.addEventListener('DOMContentLoaded', initializeStore);
