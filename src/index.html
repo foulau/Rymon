@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title id="site-title">Loading...</title>
+    <title id="static-site-title">Loading...</title>
     <style>
         * {
             margin: 0;
@@ -426,6 +426,7 @@
                 }
 
                 if (data && data.site_title) {
+                    document.body.
                     document.getElementById('site-title').textContent = data.site_title;
                 } else {
                     console.warn('No site title found.');
