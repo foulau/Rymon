@@ -409,7 +409,7 @@
             try {
                 // Initialize Supabase if credentials are provided
                 if (SUPABASE_URL !== 'YOUR_SUPABASE_URL' && SUPABASE_ANON_KEY !== 'YOUR_SUPABASE_ANON_KEY') {
-                    supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+                    supabase = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
                     await loadSiteTitle();
                 } else {
                     // Use default title if Supabase not configured
