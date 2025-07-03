@@ -420,6 +420,8 @@
                     .eq('id', 1)
                     .single();
 
+                console.log('Supabase response:', { data, error });
+
                 if (error) {
                     console.error('Error fetching site title:', error);
                     return;
@@ -434,6 +436,7 @@
                 console.error('Error loading site title:', error);
             }
         }
+
 
         document.addEventListener('DOMContentLoaded', initializeStore);
 
