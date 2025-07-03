@@ -21,17 +21,18 @@
     async function initializeStore() {
       try {
         const { data, error } = await supabase
-          .from('settings')
-          .select('site_title')
-          .eq('id', 1)
-          .single();
+        .from('settings')
+        .select('site_title')
+        .eq('id', 1); // <-- no .single()
 
         if (error) {
-          console.error('Error fetching site title:', error);
-          document.getElementById('site-title').textContent = 'Modern Electronics Store';
+        console.error('Error fetching site title:', error);
+        } else if (data.length > 0) {
+        document.getElementById('site-title').textContent = data[0].site_title;
         } else {
-          document.getElementById('site-title').textContent = data.site_title || 'Modern Electronics Store';
+        console.warn('No site title found.');
         }
+
       } catch (err) {
         console.error('Unexpected error:', err);
         document.getElementById('site-title').textContent = 'Modern Electronics Store';
