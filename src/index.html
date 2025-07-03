@@ -395,14 +395,14 @@
         </div>
     </div>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/supabase/2.39.0/supabase.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.39.0/dist/umd/supabase.js"></script>
     <script>
         // Supabase configuration
         const SUPABASE_URL = 'https://pjhonelvmspngvpbxfmd.supabase.co';
         const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBqaG9uZWx2bXNwbmd2cGJ4Zm1kIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTE1NzAxNDYsImV4cCI6MjA2NzE0NjE0Nn0.kT0pKOsAyrWbeKodvY359uZdAftzQwY6RN-9-pJfEmQ';
 
         // Initialize Supabase client
-        const supabase = Supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+        const supabase = supabasejs.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
         // Initialize the store
         async function initializeStore() {
