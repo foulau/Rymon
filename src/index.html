@@ -419,9 +419,7 @@
                     .select('site_title')
                     .eq('id', 1)
                     .single();
-
-                console.log('Supabase response:', { data, error });
-
+                console.log(data.site_title);
                 if (error) {
                     console.error('Error fetching site title:', error);
                     return;
