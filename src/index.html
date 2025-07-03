@@ -400,17 +400,13 @@
         // Supabase configuration
         const SUPABASE_URL = 'https://pjhonelvmspngvpbxfmd.supabase.co';
         const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBqaG9uZWx2bXNwbmd2cGJ4Zm1kIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTE1NzAxNDYsImV4cCI6MjA2NzE0NjE0Nn0.kT0pKOsAyrWbeKodvY359uZdAftzQwY6RN-9-pJfEmQ';
-        
+
         // Initialize Supabase client
-        let supabase;
-        
+        const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
         // Initialize the store
         async function initializeStore() {
             try {
-                if (typeof supabase === 'undefined') {
-                    throw new Error('Supabase library not loaded');
-                }
-                supabase = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
                 await loadSiteTitle();
             } catch (error) {
                 console.error('Error initializing store:', error);
@@ -421,7 +417,6 @@
         // Load site title from Supabase
         async function loadSiteTitle() {
             try {
-                // Example: Fetch from a 'settings' table with a 'site_title' column
                 const { data, error } = await supabase
                     .from('settings')
                     .select('site_title')
@@ -435,11 +430,16 @@
 
                 if (data && data.site_title) {
                     document.getElementById('site-title').textContent = data.site_title;
+                } else {
+                    console.warn('No site title found.');
                 }
             } catch (error) {
                 console.error('Error loading site title:', error);
             }
         }
+
+        // Run store initialization after DOM is ready
+        document.addEventListener('DOMContentLoaded', initializeStore);
 
         // Cart functionality
         let cart = [];
