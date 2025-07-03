@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Supabase Test</title>
+  <!-- Load Supabase library first -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.39.0/+esm" type="module"></script>
+</head>
+<body>
+  <h1 id="site-title">Loading...</h1>
+
+  <!-- Your script must run after Supabase loads -->
+  <script type="module">
+    // Supabase config
+    const SUPABASE_URL = 'https://pjhonelvmspngvpbxfmd.supabase.co';
+    const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBqaG9uZWx2bXNwbmd2cGJ4Zm1kIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTE1NzAxNDYsImV4cCI6MjA2NzE0NjE0Nn0.kT0pKOsAyrWbeKodvY359uZdAftzQwY6RN-9-pJfEmQ';
+
+    import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.39.0/+esm';
+
+    const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+    async function initializeStore() {
+      try {
+        const { data, error } = await supabase
+          .from('settings')
+          .select('site_title')
+          .eq('id', 1)
+          .single();
+
+        if (error) {
+          console.error('Error fetching site title:', error);
+          document.getElementById('site-title').textContent = 'Modern Electronics Store';
+        } else {
+          document.getElementById('site-title').textContent = data.site_title || 'Modern Electronics Store';
+        }
+      } catch (err) {
+        console.error('Unexpected error:', err);
+        document.getElementById('site-title').textContent = 'Modern Electronics Store';
+      }
+    }
+
+    initializeStore();
+  </script>
+</body>
+</html>
