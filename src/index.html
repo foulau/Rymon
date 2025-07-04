@@ -102,7 +102,7 @@
         .btn {
             padding: 10px 18px;
             border: none;
-            border-radius: 25px;
+            border-radius: 12px;
             font-size: 0.9em;
             font-weight: bold;
             cursor: pointer;
@@ -124,7 +124,7 @@
         }
 
         .btn-secondary {
-            background: #b39a0e;
+            background: #eec50f;
             color: #4741A6;
         }
 
@@ -151,7 +151,7 @@
             backdrop-filter: blur(10px);
             border: 1px solid rgba(255, 255, 255, 0.3);
             transition: all 0.3s ease;
-            height: 320px;
+            height: 330px;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
@@ -164,7 +164,7 @@
 
         .product-image {
             width: 100%;
-            height: 220px;
+            aspect-ratio: 1;
             background: #9BBBFC;
             border-radius: 10px;
             display: flex;
@@ -173,12 +173,12 @@
             color: #4741A6;
             font-weight: bold;
             font-size: 1.1em;
-            transition: all 0.8s ease;
             margin-bottom: 10px;
+            transition: all 0.4s ease;
         }
 
         .product-card:hover .product-image {
-            height: 140px;
+            aspect-ratio: 2;
         }
 
         .product-info {
@@ -196,7 +196,7 @@
         }
 
         .product-price {
-            font-size: 1.1em;
+            font-size: 3em;
             color: #4741A6;
             font-weight: bold;
             margin-bottom: 10px;
@@ -204,19 +204,16 @@
 
         .product-actions {
             opacity: 0;
-            transform: translateY(20px);
-            transition: all 0.8s ease;
+            transform: translateY(10px);
+            transition: all 0.4s ease;
             display: flex;
             flex-direction: column;
             gap: 8px;
-            height: 0;
-            overflow: hidden;
         }
 
         .product-card:hover .product-actions {
             opacity: 1;
             transform: translateY(0);
-            height: auto;
         }
 
         .cart-icon {
