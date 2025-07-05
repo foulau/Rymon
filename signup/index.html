@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>Rymon Web Portal</title>
+    <style>
+        body {
+            background: linear-gradient(135deg, #b7dae0 0%, #0f6c91 100%);
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            color: #000000;
+        }
+
+        .login-title {
+            font-size: 5em;
+            color: #267696;
+            margin-bottom: 20px;
+            text-align: center;
+            font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            padding-bottom: 200px;
+        }
+
+        .username-input, .password-input, .email-input {
+            display: block;
+            width: 300px;
+            padding: 10px;
+            margin: 10px auto;
+            font-size: 1.7em;
+            border: 2px solid #26769600;
+            outline: none;
+            border-radius: 5px;
+            background-color: #00000009;
+        }
+
+        .login-button {
+            display: block;
+            width: 320px;
+            padding: 10px;
+            margin: 20px auto;
+            font-size: 1.5em;
+            color: #ffffff;
+            background-color: #267696;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .button-row {
+            display: flex;
+            justify-content: center;
+            gap: 0px;
+            margin-top: 10px;
+        }
+        .reset-password, .create-user {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: inline-block;
+            width: 130px;
+            padding: 10px;
+            font-size: 1.1em;
+            color: #ffffff;
+            background-color: #377086;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-align: center;
+            margin: 0;
+        }
+
+        .reset-password:hover, .create-user:hover, .login-button:hover {
+            background-color: #1f5f7a;
+        }
+
+        .status-message {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            position: fixed;
+            left: 20px;
+            bottom: 20px;
+            font-size: 1.2em;
+            color: #077510;
+            margin: 0;
+            padding: 10px;
+            background: none;
+            box-shadow: none;
+            display: flex;
+            align-items: center;
+        }
+        .status-message::before {
+            content: '';
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            box-shadow: 0 0 0 2px #ffffff, 0 0 0 4px #077510;
+            border-radius: 50%;
+            background: #1ec700;
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1 class="login-title">Rymon Web Portal</h1>
+    <input type="text" placeholder="Username" class="username-input" style="padding:10px;" />
+    <input type="text" placeholder="Email" class="email-input" style="padding:10px;" />
+    <input type="password" placeholder="Password" class="password-input" style="padding:10px;" />
+    <input type="submit" value="Sign up" class="login-button" style="padding:10px;" />
+    <div class="button-row">
+        <a href="../login/" class="create-user" style="padding:10px; width: 300px; text-decoration: none;">Already have an account?</a>
+    </div>
+    <p class="status-message">All systems operational</p>
+    <script>
+        document.querySelector('.login-button').addEventListener('click', function() {
+            const username = document.querySelector('.username-input').value;
+            const email = document.querySelector('.email-input').value;
+            const password = document.querySelector('.password-input').value;
+
+            if (username && password) {
+                alert(`Username: ${username}\nPassword: ${password}`);
+            } else {
+                alert('Please enter both username and password.');
+            }
+        });
+    </script>
+</body> 
+</html>
